@@ -10,9 +10,9 @@ This is an entry for the [make.fun bounty "Worst Monday One-Liners"](https://mak
 
 `main.py` is a small deterministic program. It writes exactly one line to `/output/entry.txt` — nothing more, no trailing newline, no second line:
 
-> My Monday stand-up should have been an email. Instead it was a meeting about the email — and the email was about the meeting.
+> Monday asked me for my weekly goals, so I wrote 'survive until Friday' and my calendar auto-scheduled a meeting about it.
 
-That line is 125 characters long, comfortably inside the 140-character cap, and it is the whole joke: the Monday that eats itself, a meeting scheduled to discuss the email that was itself only about the meeting.
+That line is 121 characters long, comfortably inside the 140-character cap, and it is the whole joke: Monday turns even the goal of surviving until Friday into another meeting.
 
 ## How it is validated
 
@@ -20,7 +20,7 @@ The program does not trust itself blindly — it checks the entry twice, once be
 
 - `validate_entry(LINE)` runs before anything is written. It asserts the line is a string, that its length is between 1 and 140 characters inclusive, and that it contains no newline (`\n`) or carriage return (`\r`). It strips nothing and rewrites nothing: the line it returns is byte-for-byte the line it received, so the joke on disk is exactly the joke in the source.
 - `verify_output()` runs after the write. It re-reads `/output/entry.txt` from disk and asserts the file contents equal `LINE` exactly. If the write were ever truncated, altered, or written to the wrong path, this check raises a `ValueError` instead of exiting quietly with a broken entry.
-- `main()` prints the character count after a successful write, so a run log shows `Wrote 125 characters to /output/entry.txt` as a visible confirmation that the entry landed intact.
+- `main()` prints the character count after a successful write, so a run log shows `Wrote 121 characters to /output/entry.txt` as a visible confirmation that the entry landed intact.
 
 Any violation fails loudly with an exception and a non-zero exit code — there is no silent fallback to a different line.
 
