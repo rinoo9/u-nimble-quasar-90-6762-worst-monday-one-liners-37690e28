@@ -14,9 +14,9 @@ the line exactly, so a truncated or altered write cannot slip through.
 import os
 
 LINE = (
-    "My Monday stand-up should have been an email. "
-    "Instead it was a meeting about the email "
-    "\u2014 and the email was about the meeting."
+    "Monday asked me for my weekly goals, so I wrote "
+    "'survive until Friday' and my calendar auto-scheduled "
+    "a meeting about it."
 )
 
 OUTPUT_PATH = "/output/entry.txt"
